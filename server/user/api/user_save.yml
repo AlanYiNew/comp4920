@@ -1,0 +1,48 @@
+Example of requesting user info by id
+In this example the specification is taken from external YAML file
+---
+tags:
+  - User
+
+parameters:
+  - name: body
+    in: body
+    type: string
+    required: true
+    schema:
+          id: user_create
+          required:
+            - username
+            - password
+          properties:
+            username:
+              type: string
+              description: The user's name.
+              default: "Alan"
+            password:
+              type: string
+              description: The user's password.
+              default: "Alan123"
+
+definitions:
+  user_login_res:
+    type: object
+    properties:
+      user_name:
+        type: string
+      user_id:
+        type: string
+
+
+responses:
+  200:
+    description: "user login"
+    schema:
+      $ref: '#/definitions/user_login_res'
+    examples:
+      username: "alanyi"
+      password: "123456"
+  4XX:
+    description: Logic Error.
+  5XX:
+    description: Unexpected error.

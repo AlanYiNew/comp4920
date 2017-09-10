@@ -1,0 +1,31 @@
+Example of requesting user info by id
+In this example the specification is taken from external YAML file
+---
+tags:
+  - User
+parameters:
+  - name: id
+    in: path
+    type: string
+    required: true
+
+definitions:
+  quey_by_id_res:
+    type: object
+    properties:
+      user_name:
+        type: string
+      user_id:
+        type: string
+
+responses:
+  200:
+    description: "OK"
+    schema:
+      $ref: '#/definitions/quey_by_id_res'
+    examples:
+      id: "alanyi123"
+  4XX:
+    description: Logic Error.
+  5XX:
+    description: Unexpected error.

@@ -1,0 +1,4 @@
+flask
+flasgger
+flask_mongoengine
+bson
